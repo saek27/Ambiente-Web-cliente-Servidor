@@ -1,35 +1,42 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PetSeguro - Inicio</title>
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
+<?php
+session_start();
+require_once 'config/database.php';
 
-    <header>
-        <h1>Bienvenido a PetSeguro </h1>
-        <nav>
-            <ul>
-                <li><a href="index.php">Inicio</a></li>
-                <li><a href="historia.php">Nuestra Historia</a></li>
-                <li><a href="planes.php">Planes</a></li>
-            </ul>
-        </nav>
-    </header>
+// Autocarga de controladores
+spl_autoload_register(function ($class) {
+    require_once "app/controllers/{$class}.php";
+});
 
-    <main>
-        <section class="intro">
-            <h2>Protege a tu mejor amigo con nuestros seguros</h2>
-            <p>Ofrecemos planes diseñados para el bienestar y la seguridad de tu mascota.</p>
-            <a href="planes.php" class="btn">Ver Planes</a>
-        </section>
-    </main>
+// Manejo de rutas
+$action = $_GET['action'] ?? 'inicio';
 
-    <footer>
-        <p>© 2024 PetSeguro - Todos los derechos reservados.</p>
-    </footer>
-
-</body>
-</html>
+switch ($action) {
+    case 'inicio':
+        require 'app/views/index.php';
+        break;
+    
+    case 'planes':
+        $controller = new PlanController();
+        $planes = $controller->getAllPlanes();
+        require 'app/views/planes.php';
+        break;
+    
+    case 'mascotas':
+        if (!isset($_SESSION['user'])) {
+            header("Location: /login");
+            exit;
+        }
+        $controller = new MascotaController();
+        $mascotas = $controller->getMascotasUsuario($_SESSION['user']['id']);
+        require 'app/views/mascotas/index.php';
+        break;
+    
+    case 'login':
+        require 'app/views/auth/login.php';
+        break;
+    
+    default:
+        http_response_code(404);
+        require 'app/views/errors/404.php';
+}
+?>

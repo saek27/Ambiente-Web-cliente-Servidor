@@ -1,0 +1,12 @@
+RewriteEngine On
+RewriteBase /
+
+# Redirigir todas las solicitudes al front controller
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?action=$1 [L,QSA]
+
+# Proteger archivos sensibles
+<FilesMatch "\.(env|sql|log)$">
+    Deny from all
+</FilesMatch>
