@@ -1,7 +1,7 @@
 RewriteEngine On
-RewriteBase /
+RewriteBase /seguro_mascotas/
 
-# Redirigir todas las solicitudes al front controller
+# Redirige todas las solicitudes a index.php
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php?action=$1 [L,QSA]

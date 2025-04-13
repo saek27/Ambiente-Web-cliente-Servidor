@@ -1,6 +1,6 @@
 <?php
-require_once '../models/Database.php';
-require_once '../models/Plan.php';
+require_once __DIR__ . '/../../config/Database.php';  // Desde controllers/
+require_once __DIR__ . '/../models/Plan.php';        // Desde controllers/
 
 class PlanController extends Database {
     public function getAllPlanes() {

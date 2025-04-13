@@ -1,16 +1,17 @@
 <?php
-require_once 'Database.php';
+require_once __DIR__ . '/../../config/Database.php';  // Desde models/
 
 class Plan extends Database {
     public function getAll() {
-        $result = $this->conn->query("SELECT * FROM planes");
-        return $result->fetch_all(MYSQLI_ASSOC);
+        $conn = self::connect(); // Usa el método estático de Database
+        $stmt = $conn->query("SELECT id_plan, nombre, precio_mensual AS precio, cobertura AS descripcion FROM plan");
+        return $stmt->fetchAll(PDO::FETCH_ASSOC); // fetchAll para PDO
     }
 
     public function create($nombre, $descripcion, $precio) {
-        $stmt = $this->conn->prepare("INSERT INTO planes (nombre, descripcion, precio) VALUES (?, ?, ?)");
-        $stmt->bind_param("ssd", $nombre, $descripcion, $precio);
-        return $stmt->execute();
+        $conn = self::connect();
+        $stmt = $conn->prepare("INSERT INTO plan (nombre, cobertura, precio_mensual) VALUES (?, ?, ?)");
+        return $stmt->execute([$nombre, $descripcion, $precio]); // PDO usa execute(array)
     }
 }
 ?>

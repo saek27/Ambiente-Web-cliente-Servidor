@@ -18,9 +18,9 @@ switch ($action) {
     case 'planes':
         $controller = new PlanController();
         $planes = $controller->getAllPlanes();
-        require 'app/views/planes.php';
+        require __DIR__ . '/app/views/planes.php';  // Ruta absoluta
         break;
-    
+
     case 'mascotas':
         if (!isset($_SESSION['user'])) {
             header("Location: /login");
