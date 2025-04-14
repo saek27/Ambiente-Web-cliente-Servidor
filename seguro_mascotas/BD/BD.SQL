@@ -69,3 +69,8 @@ CREATE TABLE reclamo (
     FOREIGN KEY (poliza_id) REFERENCES poliza(id_poliza),
     FOREIGN KEY (servicio_id) REFERENCES servicio_veterinario(id_servicio_veterinario)
 );
+
+INSERT INTO plan (nombre, precio_mensual, cobertura) VALUES
+('Plan Básico', 12000.00, 'Consultas generales, vacunación anual, descuentos en medicamentos.'),
+('Plan Premium', 25000.00, 'Consultas ilimitadas, urgencias 24/7, cirugías menores, laboratorios incluidos.'),
+('Plan VIP', 40000.00, 'Todo en Plan Premium + rehabilitación, fisioterapia y seguimiento nutricional.');
