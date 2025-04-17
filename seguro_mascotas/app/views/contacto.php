@@ -28,10 +28,12 @@
             <p>¿Tienes preguntas, sugerencias o deseas saber más sobre nuestros planes? ¡Nos encantará escucharte!</p>
 
             <div class="info-contacto">
-                <div>
-                    <h3>Dirección</h3>
-                    <p>La California, San José, Costa Rica</p>
-                </div>
+    <h3>Dirección</h3>
+    <p>Nuestra sede principal se encuentra ubicada en <strong>Guadalupe, Goicoechea</strong>, específicamente en:</p>
+    <p><em>200 metros este del parque central de Guadalupe, contiguo a la Farmacia Santa Lucía, San José, Costa Rica.</em></p>
+
+    <p>Sin embargo, puedes contactar a cualquiera de nuestras <strong>veterinarias asociadas</strong>, las cuales puedes ubicar fácilmente en el siguiente mapa interactivo:</p>
+</div>
                 <div>
                     <h3>Teléfono</h3>
                     <p>+506 2222-3333</p>
@@ -43,17 +45,9 @@
             </div>
 
             <div class="mapa">
-                <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3930.0121691803694!2d-84.06314468571987!3d9.933520476946315!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0fa3be6c4cfbd%3A0x7a4f43273435369f!2sLa%20California%2C%20San%20Jos%C3%A9%2C%20Costa%20Rica!5e0!3m2!1ses-419!2scr!4v1615131221330!5m2!1ses-419!2scr" 
-                    width="100%" 
-                    height="300" 
-                    style="border:0;" 
-                    allowfullscreen="" 
-                    loading="lazy">
-                </iframe>
-            </div>
-        </section>
-    </main>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m12!1m8!1m3!1d53087.517627547706!2d-84.06533434815684!3d9.943919877985268!3m2!1i1024!2i768!4f13.1!2m1!1sveterinarias!5e1!3m2!1ses!2scr!4v1744918669132!5m2!1ses!2scr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
+
 
 
 </body>
