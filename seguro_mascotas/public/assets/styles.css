@@ -38,18 +38,21 @@ nav ul li a {
 
 /* Contenido principal */
 main {
-    flex: 1;
-    padding: 20px;
-    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 188, 212, 0.2);
 }
 
 /* Footer siempre abajo */
 footer {
-    background-color: #222;
+    background-color: #0026ce;
     color: white;
     text-align: center;
-    padding: 15px;
-    width: 100%;
+    padding: 1rem;
+    margin-top: 3rem;
 }
 
 /* Botón */

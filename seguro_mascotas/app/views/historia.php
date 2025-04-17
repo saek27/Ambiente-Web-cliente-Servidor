@@ -2,24 +2,27 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nuestra Historia - PetSeguro</title>
-    <link rel="stylesheet" href="css/styles.css">
+    
+    <link rel="stylesheet" href="../../public/assets/css/historia.css">
 </head>
-<body>
+<body style="background-image: url('../../public/img/fondo5.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
 
     <header>
         <h1>Nuestra Historia</h1>
         <nav>
             <ul>
-                <li><a href="index.php">Inicio</a></li>
-                <li><a href="historia.php">Nuestra Historia</a></li>
-                <li><a href="planes.php">Planes</a></li>
+                <li><?php $base_url = "/seguro_mascotas"; ?>
+            <a href="<?= $base_url ?>/index.php?action=inicio">Inicio</a>
+                </li>
+                <li><a href="/seguro_mascotas/app/views/contacto.php">Contacto</a></li>
+                <li><?php $base_ur = "/seguro_mascotas"; ?>
+            <a href="<?= $base_ur ?>/index.php?action=planes">Planes</a>
+        </li>
             </ul>
         </nav>
     </header>
 
-    <main>
+    <main >
         <section class="historia">
             <h2>Nuestra historia </h2>
             <p>Desde tiempos inmemoriales, los animales han sido parte fundamental de nuestras vidas. Nos acompañan en los momentos felices, nos reconfortan en los días difíciles y nos brindan amor incondicional. Sin embargo, durante mucho tiempo, la seguridad y el bienestar de nuestras mascotas dependían únicamente de la suerte y de los recursos disponibles de sus dueños.
@@ -40,9 +43,7 @@ Porque ellos son más que simples compañeros… son familia. </p>
         </section>
     </main>
 
-    <footer>
-        <p>© 2024 PetSeguro - Todos los derechos reservados.</p>
-    </footer>
-
 </body>
 </html>
+
+<?php include 'footer.php'; ?>

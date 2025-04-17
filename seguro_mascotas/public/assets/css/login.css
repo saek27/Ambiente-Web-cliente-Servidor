@@ -1,0 +1,48 @@
+/* Fondo general */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to bottom right, #cfefff, #a0d8ef);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Contenedor del formulario */
+form {
+    background-color: #ffffffcc;
+    padding: 2rem 3rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 128, 255, 0.2);
+    text-align: center;
+}
+
+/* Inputs */
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 12px 0;
+    border: 1px solid #bde0fe;
+    border-radius: 8px;
+    background-color: #e6f7ff;
+    font-size: 16px;
+}
+
+/* Botón */
+button[type="submit"] {
+    width: 100%;
+    background: linear-gradient(135deg, #010874, #2c3e50);
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #009acd;
+}

@@ -1,0 +1,79 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #e0f7fa;
+    color: #004d40;
+    line-height: 1.6;
+    padding: 20px;
+    margin: 0;
+    
+}
+
+/* Header */
+header {
+    background-color: #0270ff;
+    color: white;
+    padding: 1.5rem;
+    text-align: center;
+    border-radius: 0 0 10px 10px;
+    margin-bottom: 2rem;
+}
+
+header h1 {
+    margin-bottom: 0px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #004d40;
+}
+
+/* Contenido principal */
+main {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 188, 212, 0.2);
+}
+
+.historia h2 {
+    color: #0319e2;
+    margin-bottom: 1rem;
+}
+
+.historia p {
+    text-align: justify;
+    color: #333;
+    white-space: pre-line; /* esto conserva los saltos de línea en el texto */
+}
+
+/* Footer */
+footer {
+    margin-top: 3rem;
+    text-align: center;
+    background-color: #0270ff;
+    color: white;
+    padding: 1rem;
+    border-radius: 10px 10px 0 0;
+}

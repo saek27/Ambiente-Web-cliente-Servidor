@@ -13,5 +13,12 @@ class Plan extends Database {
         $stmt = $conn->prepare("INSERT INTO plan (nombre, cobertura, precio_mensual) VALUES (?, ?, ?)");
         return $stmt->execute([$nombre, $descripcion, $precio]); // PDO usa execute(array)
     }
+
+    public function getById($plan_id) {
+        $conn = self::connect();
+        $stmt = $conn->prepare("SELECT * FROM plan WHERE id_plan = ?");
+        $stmt->execute([$plan_id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 }
 ?>

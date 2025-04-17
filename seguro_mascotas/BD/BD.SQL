@@ -1,3 +1,6 @@
+/*copiar toda la base*/
+
+
 CREATE DATABASE IF NOT EXISTS seguro_veterinario;
 USE seguro_veterinario;
 
@@ -7,7 +10,9 @@ CREATE TABLE cliente (
     apellido VARCHAR(100),
     telefono VARCHAR(20),
     correo VARCHAR(100),
-    direccion TEXT
+    direccion TEXT,
+    password VARCHAR(255) NOT NULL,
+    UNIQUE (correo)
 );
 
 CREATE TABLE veterinaria (
@@ -70,7 +75,37 @@ CREATE TABLE reclamo (
     FOREIGN KEY (servicio_id) REFERENCES servicio_veterinario(id_servicio_veterinario)
 );
 
+CREATE TABLE contrataciones (
+    id_contratacion INT AUTO_INCREMENT PRIMARY KEY,
+    cliente_id INT NOT NULL,
+    plan_id INT NOT NULL,
+    fecha_contratacion DATE NOT NULL,
+    FOREIGN KEY (cliente_id) REFERENCES cliente(id_cliente),
+    FOREIGN KEY (plan_id) REFERENCES plan(id_plan)
+);
+
+CREATE TABLE transacciones (
+    id_transaccion INT AUTO_INCREMENT PRIMARY KEY,
+    cliente_id INT NOT NULL,
+    plan_id INT NOT NULL,
+    monto DECIMAL(10,2) NOT NULL,
+    metodo_pago_id INT NOT NULL,
+    fecha DATETIME DEFAULT CURRENT_TIMESTAMP,
+    estado ENUM('pendiente', 'completado', 'fallido') DEFAULT 'pendiente',
+    detalles TEXT,
+    FOREIGN KEY (cliente_id) REFERENCES cliente(id_cliente),
+    FOREIGN KEY (plan_id) REFERENCES plan(id_plan),
+    FOREIGN KEY (metodo_pago_id) REFERENCES metodos_pago(id_metodo)
+);
+
+
+
 INSERT INTO plan (nombre, precio_mensual, cobertura) VALUES
 ('Plan Básico', 12000.00, 'Consultas generales, vacunación anual, descuentos en medicamentos.'),
 ('Plan Premium', 25000.00, 'Consultas ilimitadas, urgencias 24/7, cirugías menores, laboratorios incluidos.'),
 ('Plan VIP', 40000.00, 'Todo en Plan Premium + rehabilitación, fisioterapia y seguimiento nutricional.');
+
+INSERT INTO metodos_pago (nombre, descripcion) VALUES
+('SINPE Móvil', 'Pago mediante transferencia móvil'),
+('Tarjeta Crédito/Débito', 'Pago con tarjeta Visa/Mastercard'),
+('Pago en un Click', 'Pago rápido con datos guardados');

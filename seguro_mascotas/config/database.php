@@ -3,7 +3,7 @@ class Database {
     private static $host = 'localhost';
     private static $dbname = 'seguro_veterinario';
     private static $username = 'root';
-    private static $password = '';
+    private static $password = '';//cambiar en cada compu
 
     public static function connect() {
         try {

@@ -1,17 +1,21 @@
-<?php include 'header.php'; ?>
+<?php 
+include 'header.php'; 
+$base_url = '/seguro_mascotas';?>
 
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PetSeguro - Nuestros Planes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/seguro_mascotas/public/assets/css/styles.css">
-    <!-- Iconos de Font Awesome -->
+    <link rel="stylesheet" href="../../public/assets/css/styles.css">
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <style>
-        /* Estilos personalizados adicionales */
         .plan-card {
             transition: all 0.3s ease;
             border: none;
@@ -37,6 +41,7 @@
         }
     </style>
 </head>
+
 <body>
 
 <?php
@@ -44,38 +49,31 @@ $planController = new PlanController();
 $planes = $planController->getAllPlanes();
 ?>
 
-<main class="py-5">
+<main class="py-5" style="background-image: url('public/img/fondo5.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
     <div class="container">
-        <!-- Hero Section -->
         <div class="row justify-content-center mb-5">
             <div class="col-lg-8 text-center">
-                <h1 class="display-4 fw-bold mb-3">🐾 Nuestros Planes de Protección</h1>
+                <h1 class="display-4 fw-bold mb-3" style="background-color: #ffffff;">🐾 Nuestros Planes de Protección</h1>
                 <p class="lead text-muted">Elige el plan perfecto para el cuidado integral de tu mascota</p>
             </div>
         </div>
 
-        <!-- Planes -->
         <div class="row g-4">
             <?php foreach ($planes as $plan): ?>
             <div class="col-md-4">
                 <div class="plan-card card h-100 shadow">
-                    <!-- Encabezado del Plan -->
                     <div class="plan-header card-header py-4">
                         <h3 class="h2 text-center mb-0"><?= htmlspecialchars($plan['nombre']) ?></h3>
                     </div>
-                    
-                    <!-- Cuerpo del Plan -->
+
                     <div class="card-body p-4">
-                        <!-- Precio -->
                         <div class="text-center my-4">
                             <span class="price text-primary">₡<?= number_format($plan['precio'], 2) ?></span>
                             <span class="text-muted">/mes</span>
                         </div>
-                        
-                        <!-- Beneficios -->
+
                         <ul class="list-unstyled mb-4">
                             <?php 
-                            // Dividimos la descripción por puntos
                             $beneficios = preg_split('/\n|\r\n?|•/', $plan['descripcion']);
                             foreach ($beneficios as $beneficio):
                                 if(trim($beneficio) != ''):
@@ -89,25 +87,25 @@ $planes = $planController->getAllPlanes();
                             endforeach; 
                             ?>
                         </ul>
-                    </div>
-                    
-                    <!-- Pie del Plan -->
-                    <div class="card-footer bg-transparent border-0 py-3">
-                        <a href="#" class="btn btn-primary btn-lg w-100 py-3">
-                            Contratar Ahora <i class="fas fa-arrow-right ms-2"></i>
-                        </a>
-                    </div>
+                        <div class="card-footer bg-transparent border-0 py-3">
+                        <form action="<?= $base_url ?>/index.php?action=contratar" method="POST">
+        <input type="hidden" name="plan_id" value="<?= $plan['id_plan'] ?>">
+        <button type="submit" class="btn btn-primary btn-lg w-100 py-3">
+            Contratar Ahora <i class="fas fa-arrow-right ms-2"></i>
+        </button>
+    </form>
+</div>
+</div>
                 </div>
             </div>
             <?php endforeach; ?>
         </div>
-        
-        <!-- Sección adicional -->
+
         <div class="row mt-5">
             <div class="col-12 text-center">
                 <div class="p-4 bg-light rounded-3">
                     <h3 class="h4 mb-3">¿Necesitas ayuda para elegir?</h3>
-                    <a href="/seguro_mascotas/contacto" class="btn btn-outline-primary">
+                    <a href="/seguro_mascotas/app/views/contacto.php" class="btn btn-outline-primary">
                         <i class="fas fa-phone-alt me-2"></i> Contáctanos
                     </a>
                 </div>
@@ -118,7 +116,7 @@ $planes = $planController->getAllPlanes();
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
+
+
 </body>
 </html>
-
-<?php include 'footer.php'; ?>
