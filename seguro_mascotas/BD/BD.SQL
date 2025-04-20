@@ -1,5 +1,4 @@
-/*copiar toda la base*/
-
+/* Copiar toda la base */
 
 CREATE DATABASE IF NOT EXISTS seguro_veterinario;
 USE seguro_veterinario;
@@ -84,6 +83,12 @@ CREATE TABLE contrataciones (
     FOREIGN KEY (plan_id) REFERENCES plan(id_plan)
 );
 
+CREATE TABLE metodos_pago (
+    id_metodo INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100),
+    descripcion TEXT
+);
+
 CREATE TABLE transacciones (
     id_transaccion INT AUTO_INCREMENT PRIMARY KEY,
     cliente_id INT NOT NULL,
@@ -109,3 +114,13 @@ INSERT INTO metodos_pago (nombre, descripcion) VALUES
 ('SINPE Móvil', 'Pago mediante transferencia móvil'),
 ('Tarjeta Crédito/Débito', 'Pago con tarjeta Visa/Mastercard'),
 ('Pago en un Click', 'Pago rápido con datos guardados');
+
+INSERT INTO veterinaria (nombre, direccion, telefono) VALUES
+('Veterinaria La Sabana', 'Calle 42, Sabana, San José', '2222-1155'),
+('Veterinaria Guadalupe', 'Centro Comercial El Dorado, Guadalupe', '2245-5100'),
+('Veterinaria Pet House', 'Barrio Dent, San José', '2225-9862'),
+('Hospital Veterinario San Francisco', 'Calle Blancos, Goicoechea', '2216-5858'),
+('Veterinaria Mundo Animal', 'Barrio Escalante, Montes de Oca', '2283-6868'),
+('Veterinaria San José', 'Av. Central, San José centro', '2256-1726'),
+('Clínica Veterinaria La California', 'Mall San Pedro, San José', '2283-2121'),
+('Veterinaria Animal City', 'Curridabat, contiguo a Plaza del Sol', '2272-7272');

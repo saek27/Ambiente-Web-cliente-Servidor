@@ -20,7 +20,7 @@ class PlanController {
         // Validar sesión
         if (!isset($_SESSION['cliente_id'])) {
             $_SESSION['error'] = "Debe iniciar sesión";
-            header("Location: /seguro_mascotas/index.php?action=login");
+            header("Location: /seguro_mascotas/index.php?action=Registro");
             exit;
         }
 

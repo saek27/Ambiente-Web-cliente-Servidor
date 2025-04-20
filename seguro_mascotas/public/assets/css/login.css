@@ -46,3 +46,24 @@ button[type="submit"] {
 button[type="submit"]:hover {
     background-color: #009acd;
 }
+.btn-secundario {
+    display: inline-block;
+    margin-top: 10px;
+    text-decoration: none;
+    background-color:#0162b1;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+}
+.container {
+    background-color: #ffffff;
+    padding: 30px 40px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+}
+.btn-secundario:hover {
+    background-color: #0162b1;
+}

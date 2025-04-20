@@ -48,19 +48,30 @@ switch ($action) {
         $controller->procesarPago();
         break;
 
+    case 'Registro':
+        require 'app/views/registro.php';
+        break;
+    
     case 'login':
         require 'app/views/auth/login.php';
         break;
 
     case 'mascotas':
-        if (!isset($_SESSION['cliente'])) {
-            header("Location: login");
-            exit;
-        }
-        $controller = new MascotaController();
-        $mascotas = $controller->getMascotasUsuario($_SESSION['cliente']['id_cliente']);
-        require 'app/views/mascotas/index.php';
-        break;
+            $controller = new MascotaController();
+            $controller->mostrarMascotas();
+            break;
+    case 'registrar_mascota':
+            $controller = new MascotaController();
+            $controller->registrarMascota();
+            break;
+    case 'agendar_cita':
+            $controller = new CitaController();
+            $controller->formulario();
+            break; 
+    case 'guardar_cita':
+            $controller = new CitaController();
+            $controller->nuevaCita();
+            break;            
     case 'pago_exitoso':
         require 'app/views/pagos/exito.php';
         break;
@@ -76,8 +87,20 @@ switch ($action) {
         $controller = new PlanController();
         $controller->cancelarPlan();
         break;
-                
 
+    case 'perfil':
+        require 'app/views/auth/perfil.php'; // Crear esta vista
+        break;
+    
+    case 'logout':
+        session_start();
+        session_unset();
+        session_destroy();
+        header("Location: /seguro_mascotas/index.php?action=inicio");
+        exit;
+        break;
+        
+                
     default:
         http_response_code(404);
         require 'app/views/errors/404.php';
